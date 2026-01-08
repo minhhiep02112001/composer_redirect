@@ -21,13 +21,13 @@ class RedirectServiceProvider extends ServiceProvider
         if (!config('app.redirect_middleware_registered', true)) {
             return;
         }
-        $this->loadViewsFrom(__DIR__ . '/views', 'microservice');
+        $this->loadViewsFrom(__DIR__ . '/views', 'redirect301');
 
         $router = $this->app->make('router');
-        $router->aliasMiddleware('microservice.redirect', \Microservice\Middleware\Redirect301Middleware::class);
+        $router->aliasMiddleware('redirect.301', \Redirect\Middleware\Redirect301Middleware::class);
         // ✅ CRUD quản lý redirect 301 (admin)
-        $router->group(['middleware' => ['auth:web', 'keycloak-web-can'],'as' => 'microservice.', 'prefix' => env('ROUTE_PREFIX')], function () use ($router) {
-            $router->resource('redirects', 'Microservices\Controllers\RedirectController');
+        $router->group(['middleware' => ['auth:web', 'keycloak-web-can'],'as' => 'redirect.', 'prefix' => env('ROUTE_PREFIX')], function () use ($router) {
+            $router->resource('redirects', 'Redirect\Controllers\RedirectController');
         });
     }
 }

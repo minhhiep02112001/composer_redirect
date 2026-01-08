@@ -35,11 +35,11 @@ class RedirectController extends BaseController
             'pagination' =>  $rows->isNotEmpty() && ($rows instanceof \Illuminate\Pagination\Paginator) ? $rows->setPath(\URL::current())->appends($request->get('filter', []))->links() : '',
             'page' => $request->get('page', 1),
         ];
-        return view('redirect::redirects.index', $data);
+        return view('redirect301::redirects.index', $data);
     }
     public function create(Request $request)
     {
-        return view('redirect::redirects.form', ['method' => 'POST', 'action' => route('redirect.redirects.store')]);
+        return view('redirect301::redirects.form', ['method' => 'POST', 'action' => route('redirect.redirects.store')]);
     }
     public function show($id)
     {
@@ -62,7 +62,7 @@ class RedirectController extends BaseController
     }
     public function edit($id)
     {
-        return view('redirects.edit', ['row' => $this->model->detail($id), 'method' => 'PUT', 'action' => route('redirects.update', ['id' => $id])]);
+        return view('redirect301::redirects.edit', ['row' => $this->model->detail($id), 'method' => 'PUT', 'action' => route('redirect.redirects.update', ['id' => $id])]);
     }
     public function update($id, Request $request)
     {
