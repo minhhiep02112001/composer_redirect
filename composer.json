@@ -1,5 +1,5 @@
 {
-    "name": "8xprovn/redirect",
+    "name": "redirect301",
     "description": "Laravel Redirect 301 Manager",
     "type": "library",
     "license": "MIT",
