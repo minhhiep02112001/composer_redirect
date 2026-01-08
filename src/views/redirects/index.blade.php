@@ -23,8 +23,13 @@
                     </tr>
                 </thead>
                 <tbody id="checkbox_list">
-                    @foreach ($rows as $key => $row)
-                        <tr>
+                     
+                    @foreach (collect($rows->items())->toArray() as $key =>  $row)
+                    @php
+                        $row = collect($row)->toArray();
+                    @endphp
+                      
+                    <tr>
                             <td>{{ ($page - 1) * config('data.default_limit_pagination', 30) + ($key + 1) }}</td>
                             <td>
                                 {{!empty($row['status']) && $row['status'] == 'active'? '✅' : '⛔'}} 

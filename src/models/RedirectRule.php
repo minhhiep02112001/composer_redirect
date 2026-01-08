@@ -25,13 +25,14 @@ class RedirectRule
         if (!empty($filter['status'])) {
             $q->where('status', (int)$filter['status']);
         }
- 
+
         return $q->orderBy('_id', 'desc')->simplePaginate($perPage);
     }
 
     public static function find($id)
     {
-        return DB::connection(env('DB_CONNECTION'))->table('redirect_rules')->find($id);
+        $item = DB::connection(env('DB_CONNECTION'))->table('redirect_rules')->where('_id', $id)->first();
+        return collect($item)->toArray();
     }
     public static function findByOld(string $urlOld)
     {
