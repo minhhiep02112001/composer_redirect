@@ -74,7 +74,7 @@ class RedirectController extends BaseController
     }
     public function edit($id)
     {
-        return view('redirect::redirects.edit', ['row' => $this->model->detail($id), 'method' => 'PUT', 'action' => route('redirect.redirects.update', ['redirect' => $id])]);
+        return view('redirect::redirects.form', ['row' => $this->model->detail($id), 'method' => 'PUT', 'action' => route('redirect.redirects.update', ['redirect' => $id])]);
     }
     public function update($id, Request $request)
     {
