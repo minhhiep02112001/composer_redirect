@@ -1,6 +1,5 @@
 <?php
-
-namespace Microservice\Middleware;
+namespace Redirect\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

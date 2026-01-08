@@ -12,7 +12,7 @@
                 <h5 class="card-title">Danh sách link redirect 301</h5>
 
                 <div class="header-elements ">
-                    <a class="call_ajax_modal btn btn-teal" href="{{ route('microservice.redirects.create') }}">Tạo mới</a>
+                    <a class="call_ajax_modal btn btn-teal" href="{{ route('redirect.redirects.create') }}">Tạo mới</a>
                 </div>
             </div>
             <table class="table datatable-fixed-both" width="100%">
@@ -40,10 +40,10 @@
                                         <i class="icon-menu9"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="{{ route('microservice.redirects.edit', ['redirect' => $row['_id']]) }}"
+                                        <a href="{{ route('redirect.redirects.edit', ['redirect' => $row['_id']]) }}"
                                             class="dropdown-item call_ajax_modal">Sửa</a>
                                         <a class="quick-action-confirm dropdown-item" content="Bạn có chắc muốn xóa không"
-                                            action="{{ route('microservice.redirects.destroy', ['redirect' => $row['_id']]) }}'"
+                                            action="{{ route('redirect.redirects.destroy', ['redirect' => $row['_id']]) }}'"
                                             method="delete" href="#">Xóa</a>
                                     </div>
                                 </div>
@@ -59,5 +59,5 @@
     </div>
 @stop
 @section('left-slidebar')
-    @include('microservice::redirects.filter')
+    @include('redirect::redirects.filter')
 @endsection

@@ -1,6 +1,6 @@
 <?php
 
-namespace Microservices\Controllers;
+namespace redirects\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -15,7 +15,7 @@ class RedirectController extends BaseController
     private $fillable = ['url_old', 'url_new', 'status'];
     public function __construct()
     {
-        $this->model = \App::make(\Microservices\models\RedirectRule::class);
+        $this->model = \App::make(\Redirect\models\RedirectRule::class);
     }
     public function index(Request $request)
     {
@@ -35,11 +35,11 @@ class RedirectController extends BaseController
             'pagination' =>  $rows->isNotEmpty() && ($rows instanceof \Illuminate\Pagination\Paginator) ? $rows->setPath(\URL::current())->appends($request->get('filter', []))->links() : '',
             'page' => $request->get('page', 1),
         ];
-        return view('microservice::redirects.index', $data);
+        return view('redirect::redirects.index', $data);
     }
     public function create(Request $request)
     {
-        return view('microservice::redirects.form', ['method' => 'POST', 'action' => route('microservice.redirects.store')]);
+        return view('redirect::redirects.form', ['method' => 'POST', 'action' => route('redirect.redirects.store')]);
     }
     public function show($id)
     {

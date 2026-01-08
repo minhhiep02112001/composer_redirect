@@ -1,18 +1,22 @@
 {
     "name": "8xprovn/redirect",
+    "description": "Laravel Redirect 301 Manager",
+    "type": "library",
+    "license": "MIT",
     "autoload": {
-         "psr-4": {
-             "Redirect\\": "src/"
-         }
+        "psr-4": {
+            "Redirect\\": "src/"
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Redirect\\RedirectServiceProvider"
-            ],
-            "aliases": {
-                "Redirect": "Redirect\\Facade\\Redirect"
-            }
+            ]
         }
-    }
- }
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "minimum-stability": "stable"
+}

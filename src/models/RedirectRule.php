@@ -1,6 +1,6 @@
 <?php
 
-namespace Microservices\models; 
+namespace Redirect\models; 
 class RedirectRule extends BaseModel
 { 
     /**

@@ -1,6 +1,5 @@
 <?php
-
-namespace Microservices;
+namespace Redirect;
 
 use Illuminate\Support\ServiceProvider; 
 
