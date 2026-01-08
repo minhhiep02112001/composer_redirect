@@ -1,9 +1,6 @@
 @extends('common.filter_layout')
 @section('section_filter')
-    @php
-        $route = \Route::current();
-        $routeName = $route->getName();
-    @endphp
+  
     <!-- Sidebar search -->
     <div class="sidebar-section">
         <div class="sidebar-section-header">

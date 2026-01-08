@@ -1,7 +1,4 @@
-@php
-    $route = \Route::current();
-    $routeName = $route->getName();
-@endphp
+ 
 @extends('layout.app')
 @section('content')
     @include('common.content_header', ['name' => 'Danh sách link 301'])
