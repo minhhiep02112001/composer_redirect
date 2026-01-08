@@ -1,5 +1,5 @@
 {
-    "name": "composer-redirect",
+    "name": "composer_redirect",
     "description": "Laravel Redirect 301 Manager",
     "type": "library",
     "license": "MIT",
