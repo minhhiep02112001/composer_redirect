@@ -52,6 +52,18 @@ class RedirectController extends BaseController
             'url_old' => 'required|string|max:255',
             'url_new' => 'required|string|max:255',
         ]);
+        // ❌ bỏ query string (?...)
+        $data['url_old'] = strtok($data['url_old'], '?');
+        $data['url_new'] = strtok($data['url_new'], '?');
+
+        // ✅ ép https nếu cần
+        $data['url_old'] = preg_replace('#^http://#i', 'https://', $data['url_old']);
+        $data['url_new'] = preg_replace('#^http://#i', 'https://', $data['url_new']);
+
+        // ✅ bỏ slash cuối
+        $data['url_old'] = rtrim($data['url_old'], '/');
+        $data['url_new'] = rtrim($data['url_new'], '/');
+
         if ($validator->fails()) {
             return response()->json(['status' => 'error', 'errors' => $validator->errors()->first()], 400);
         }
@@ -62,7 +74,7 @@ class RedirectController extends BaseController
     }
     public function edit($id)
     {
-        return view('redirect::redirects.edit', ['row' => $this->model->detail($id), 'method' => 'PUT', 'action' => route('redirect.redirects.update', ['id' => $id])]);
+        return view('redirect::redirects.edit', ['row' => $this->model->detail($id), 'method' => 'PUT', 'action' => route('redirect.redirects.update', ['redirect' => $id])]);
     }
     public function update($id, Request $request)
     {
@@ -71,6 +83,18 @@ class RedirectController extends BaseController
             'url_old' => 'required|string|max:255',
             'url_new' => 'required|string|max:255',
         ]);
+        // ❌ bỏ query string (?...)
+        $data['url_old'] = strtok($data['url_old'], '?');
+        $data['url_new'] = strtok($data['url_new'], '?');
+
+        // ✅ ép https nếu cần
+        $data['url_old'] = preg_replace('#^http://#i', 'https://', $data['url_old']);
+        $data['url_new'] = preg_replace('#^http://#i', 'https://', $data['url_new']);
+
+        // ✅ bỏ slash cuối
+        $data['url_old'] = rtrim($data['url_old'], '/');
+        $data['url_new'] = rtrim($data['url_new'], '/');
+
         if ($validator->fails()) {
             return response()->json(['status' => 'error', 'errors' => $validator->errors()->first()], 400);
         }
