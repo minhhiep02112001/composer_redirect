@@ -17,12 +17,13 @@ class RedirectServiceProvider extends ServiceProvider
         if (!config('app.redirect_middleware_registered', true)) {
             return;
         }
+       
         $this->loadViewsFrom(__DIR__ . '/views', 'redirect');
 
         $router = $this->app->make('router');
         $router->aliasMiddleware('redirect.301', \Redirect\Middleware\Redirect301Middleware::class);
         // ✅ CRUD quản lý redirect 301 (admin)
-        $router->group(['middleware' => ['auth:web', 'keycloak-web-can'], 'as' => 'redirect.', 'prefix' => env('ROUTE_PREFIX')], function () use ($router) {
+        $router->group(['middleware' => ['auth:web' ], 'as' => 'redirect.', 'prefix' => env('ROUTE_PREFIX')], function () use ($router) {
             $router->resource('redirects', 'Redirect\Controllers\RedirectController');
         });
     }
